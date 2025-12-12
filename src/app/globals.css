@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Design Tokens */
+  --background-aurora-start: #BECFEE;
+  --background-aurora-mid: #71C6E2;
+  --background-aurora-end: #D9F4FA;
+
+  --text-primary: #15313D;
+  --text-accent: #3CABDA;
+
+  --bg-card-inner: #F4FDFF;
+
+  --gradient-option-start: #C6E9F7;
+  --gradient-option-end: #E5F8FF;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  /* Default body font */
+  --font-serif: var(--font-dm-serif);
+  --font-display: var(--font-manrope);
+  --font-hand: var(--font-caveat);
+
+  /* Colors - extending utility classes */
+  --color-primary-text: var(--text-primary);
+  --color-accent: var(--text-accent);
+  --color-card-inner: var(--bg-card-inner);
+
+  /* Gradients can be handled via utility classes or custom additions here if needed, 
+     but standard Tailwind classes often suffice. We'll add specifics if needed. */
+
+  /* Define some custom gradients as utilities if feasible, or just use style props/arbitrary values */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Global Reset/Base */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* Aurora Background - Figma Spec */
+  background: linear-gradient(107.96deg, #BECFEE 0%, #71C6E2 50%, #D9F4FA 75%, #BECFEE 100%);
+  background-attachment: fixed;
+  /* Keep background static on scroll if wanted */
+  color: var(--text-primary);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* To ensure full height */
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: linear-gradient(112.86deg, rgba(255, 255, 255, 0.4) -6.68%, rgba(255, 255, 255, 0.12) 45.63%, rgba(255, 255, 255, 0.4) 103.45%);
+  border: 0.7px solid #FFFFFF;
+  box-shadow: 0px 43px 69px rgba(0, 0, 0, 0.63);
+  backdrop-filter: blur(7px);
+  border-radius: 50px;
+}
+
+/* Custom Utilities that might be complex to express inline */
+.text-gradient-title {
+  background: linear-gradient(90deg, #15313D 0%, #3CABDA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
