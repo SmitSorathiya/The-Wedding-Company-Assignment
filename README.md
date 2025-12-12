@@ -74,7 +74,3 @@ src/
 ## 📝 License
 
 This project was created as part of a frontend assignment.
-
----
-
-Built with ❤️ using Next.js
